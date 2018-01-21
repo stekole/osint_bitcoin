@@ -16,7 +16,9 @@ This script is used to search shodan for whatever search you would like
    
    
 feel free to pipe to a file
+
+    example: 
     
-   ``` python search_shodan.py --page 2 --search "Server: LINUX/2.4 UPnP/1.0 BRCM400/1.0" ```
+   ``` python search_shodan.py --page 2 --search "Server: LINUX/2.4 UPnP/1.0 BRCM400/1.0" >> list.txt ```
    
    
