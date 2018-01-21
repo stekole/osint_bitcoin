@@ -7,9 +7,13 @@ This script is used to search shodan for whatever search you would like
 
    ``` usage: search_shodan.py [-h] [-a APIKEY] [--search SEARCH] [--page PAGENUMBER] ```
 
+
    -a --apikey   =    Your api key 
+   
    -s --search   =    Your search terms
+   
    -p --page     =    Page number you want to return 
+   
    
 feel free to pipe to a file
     
