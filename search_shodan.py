@@ -9,21 +9,22 @@ def parse_args():
    parser = argparse.ArgumentParser()
    parser.add_argument("-a", "--apikey", help="Your api key")
    parser.add_argument("-s", "--search", help="Your search terms")
-   parser.add_argument("-s", "--search", help="Your search terms")
+   parser.add_argument("-p", "--page", help="Page number you want to return")
    return parser.parse_args()
 
-def shodan_search(search, apikey):
+def shodan_search(search, apikey, pagenumber):
 
     if apikey:
+        # If arg 
         API_KEY = apikey
     else:
-	API_KEY = os.environ['SHODAN_API_KEY']
-    api = shodan.Shodan(API_KEY)
-    ips_and_ports = []
+      API_KEY = os.environ['SHODAN_API_KEY']
+      api = shodan.Shodan(API_KEY)
+      ips_and_ports = []
 
     # Get IPs from Shodan search results
     try:
-        results = api.search(search, page=1)
+        results = api.search(search, page=pagenumber)
         total_results = results['total']
         print '[+] Total results: {0}'.format(total_results)
         print '[+] First page:'
@@ -37,10 +38,12 @@ def shodan_search(search, apikey):
         print '[!] Shodan search error:', e
 
 def main():
-    args = parse_args()
-    apikey = args.apikey
-    search = args.search
-    shodan_search(search, apikey)
+    args         = parse_args()
+    apikey       = args.apikey
+    search       = args.search
+    pagenumber   = args.page
+
+    shodan_search(search, apikey, pagenumber)
 
 main()
 
